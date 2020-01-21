@@ -44,6 +44,17 @@ resource "aws_s3_bucket" "default" {
   region        = var.region
   force_destroy = var.force_destroy
 
+  dynamic "server_side_encryption_configuration" {
+    for_each = var.server_side_encryption_enabled ? ["enabled"] : []
+    content {
+      rule {
+        apply_server_side_encryption_by_default {
+          sse_algorithm = "AES256"
+        }
+      }
+    }
+  }
+
   logging {
     target_bucket = module.logs.bucket_id
     target_prefix = module.logs.prefix
