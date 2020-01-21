@@ -38,18 +38,6 @@ variable "hostname" {
   description = "Name of website bucket in `fqdn` format (e.g. `test.example.com`). IMPORTANT! Do not add trailing dot (`.`)"
 }
 
-variable "parent_zone_id" {
-  type        = string
-  description = "ID of the hosted zone to contain the record"
-  default     = ""
-}
-
-variable "parent_zone_name" {
-  type        = string
-  description = "Name of the hosted zone to contain the record"
-  default     = ""
-}
-
 variable "index_document" {
   type        = string
   default     = "index.html"
